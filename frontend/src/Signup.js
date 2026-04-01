@@ -6,21 +6,21 @@ function Signup() {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+ // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    if (!firstName || !email || !password) return;
+    if (!firstName  || !password) return;
 
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:8080/api/customer-register", {
+      const response = await fetch("http://localhost:5001/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ firstName, lastName, email, password }),
+        body: JSON.stringify({ firstName, lastName, password }),
       });
 
       if (!response.ok) throw new Error("Registration failed");
@@ -28,7 +28,7 @@ function Signup() {
       alert("Registration successful! You can now log in.");
       setFirstName("");
       setLastName("");
-      setEmail("");
+     // setEmail("");
       setPassword("");
     } catch (err) {
       console.error(err);
@@ -81,19 +81,7 @@ function Signup() {
               />
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-zinc-400 mb-2">
-                Email Address *
-              </label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                required
-                className="w-full bg-zinc-800 border border-zinc-700 text-white px-5 py-4 rounded-2xl focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/30 transition-all text-lg placeholder-zinc-500"
-              />
-            </div>
+         
 
             <div>
               <label className="block text-sm font-medium text-zinc-400 mb-2">

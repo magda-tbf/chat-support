@@ -11,8 +11,9 @@ import {
   MessageInput,
   ChannelPreviewMessenger,
   Thread,
+  CustomMessageActionsList,
 } from "stream-chat-react";
-import { CustomMessage } from "./CustomMessage";
+
 
 let chatClient;
 
@@ -82,7 +83,7 @@ function Admin() {
               <Channel>
                 <Window>
                   <ChannelHeader />
-                  <MessageList Message={CustomMessage}/>
+                  <MessageList Message={CustomMessageActionsList}/>
                   <MessageInput focus />
                 </Window>
                 <Thread />
